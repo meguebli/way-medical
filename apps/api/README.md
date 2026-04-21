@@ -25,7 +25,8 @@ Backend principal en Java Spring Boot.
 
 ## Fonctionnalites de base
 
-- Spring Security avec protection par roles
+- Spring Security avec auth JWT et protection par roles
+- endpoint login `/api/v1/auth/login`
 - endpoint Swagger disponible
 - validation des requetes
 - gestion centralisee des exceptions
@@ -56,3 +57,7 @@ Compte local bootstrap:
 
 - `admin@wayupit.fr`
 - `ChangeMe123!`
+
+JWT:
+
+- header: `Authorization: Bearer <token>`

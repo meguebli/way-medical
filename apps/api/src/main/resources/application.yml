@@ -33,6 +33,12 @@ management:
       exposure:
         include: health,info
 
+app:
+  security:
+    jwt:
+      secret: ${JWT_SECRET:V2F5TWVkaWNhbFN1cGVyU2VjcmV0S2V5Rm9ySldUMTIzNDU2Nzg5MDEyMzQ1Ng==}
+      expiration-seconds: ${JWT_EXPIRATION_SECONDS:3600}
+
 ---
 spring:
   config:

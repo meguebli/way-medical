@@ -1,13 +1,12 @@
 package fr.wayup.medical.api.user.api;
 
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import fr.wayup.medical.api.auth.security.JwtAuthenticationFilter;
 import fr.wayup.medical.api.config.SecurityConfig;
 import fr.wayup.medical.api.common.exception.GlobalExceptionHandler;
 import fr.wayup.medical.api.user.api.dto.UserResponse;
@@ -22,7 +21,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
-import org.springframework.security.core.userdetails.User;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 @WebMvcTest(UserController.class)
@@ -38,7 +37,11 @@ class UserControllerTest {
   @MockBean
   private CustomUserDetailsService customUserDetailsService;
 
+  @MockBean
+  private JwtAuthenticationFilter jwtAuthenticationFilter;
+
   @Test
+  @WithMockUser(roles = "ADMIN")
   void shouldReturnUsersForAuthenticatedAdmin() throws Exception {
     UserResponse response = new UserResponse(
         1L,
@@ -51,24 +54,17 @@ class UserControllerTest {
         OffsetDateTime.now()
     );
 
-    when(customUserDetailsService.loadUserByUsername("admin@wayupit.fr")).thenReturn(
-        User.withUsername("admin@wayupit.fr").password("{noop}password").roles("ADMIN").build()
-    );
     when(userService.getAllUsers()).thenReturn(List.of(response));
 
-    mockMvc.perform(get("/api/v1/users").with(httpBasic("admin@wayupit.fr", "password")))
+    mockMvc.perform(get("/api/v1/users"))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$[0].email").value("contact@wayupit.fr"));
   }
 
   @Test
+  @WithMockUser(roles = "ADMIN")
   void shouldRejectInvalidPayload() throws Exception {
-    when(customUserDetailsService.loadUserByUsername("admin@wayupit.fr")).thenReturn(
-        User.withUsername("admin@wayupit.fr").password("{noop}password").roles("ADMIN").build()
-    );
-
     mockMvc.perform(post("/api/v1/users")
-            .with(httpBasic("admin@wayupit.fr", "password"))
             .contentType(MediaType.APPLICATION_JSON)
             .content("""
                 {
@@ -83,4 +79,3 @@ class UserControllerTest {
         .andExpect(jsonPath("$.message").value("Validation failed"));
   }
 }
-
