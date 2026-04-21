@@ -47,26 +47,29 @@ Chaque environnement doit avoir:
 
 ## Standards Git proposes
 
-- Branche principale: `main`
+- Mode de travail: Git Flow
+- Branche production: `main`
+- Branche integration: `develop`
 - Branches de travail:
-  - `feat/<scope>-<short-name>`
-  - `fix/<scope>-<short-name>`
-  - `chore/<scope>-<short-name>`
-  - `docs/<scope>-<short-name>`
-  - `hotfix/<scope>-<short-name>`
+  - `feature/<scope>-<jira>-<short-name>`
+  - `release/<version>`
+  - `hotfix/<scope>-<jira>-<short-name>`
+  - `support/<name>` si necessaire
 - Commits: style Conventional Commits
 
 Exemples:
 
-- `feat(api): add patient authentication endpoint`
-- `fix(web): prevent session timeout loop`
-- `docs(repo): add contribution guidelines`
+- `feature/api-SCRUM-101-authentication`
+- `feature/web-SCRUM-145-patient-dashboard`
+- `release/0.1.0`
+- `hotfix/api-SCRUM-220-login-failure`
 
 ## Demarrage
 
 1. Lire [CONTRIBUTING.md](CONTRIBUTING.md)
 2. Lire [docs/architecture/monorepo.md](docs/architecture/monorepo.md)
 3. Lire [docs/security/README.md](docs/security/README.md)
+4. Lire [docs/process/git-flow.md](docs/process/git-flow.md)
 
 ## Points d'attention produit medical
 
@@ -81,3 +84,8 @@ Exemples:
 - Mettre en place CI/CD par environnement `RCT`, `PPR`, `PROD`
 - Ajouter lint, tests, SAST, secret scanning, dependency scanning
 - Configurer les protections de branches sur la forge
+
+## Outils utiles
+
+- Jira automation: [scripts/jira/README.md](scripts/jira/README.md)
+- Git Flow helpers: [docs/process/git-flow.md](docs/process/git-flow.md)
