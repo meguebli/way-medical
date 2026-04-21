@@ -5,7 +5,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { catchError, map, of, startWith } from 'rxjs';
+import { catchError, map, of } from 'rxjs';
 import { DashboardApiService } from '../../core/services/dashboard-api.service';
 
 @Component({
@@ -54,6 +54,8 @@ import { DashboardApiService } from '../../core/services/dashboard-api.service';
         <mat-card-title>Frontend baseline</mat-card-title>
         <mat-divider></mat-divider>
         <mat-list>
+          <mat-list-item>JWT login wired to Spring Boot</mat-list-item>
+          <mat-list-item>Users endpoint consumed through Bearer auth</mat-list-item>
           <mat-list-item>Token interceptor for API requests</mat-list-item>
           <mat-list-item>Standalone feature routing</mat-list-item>
           <mat-list-item>Angular Material UI foundation</mat-list-item>
@@ -146,13 +148,6 @@ export class DashboardComponent {
         { label: 'Pending alerts', value: metrics.pendingAlerts, icon: 'notification_important' }
       ]
     })),
-    startWith({
-      metrics: [
-        { label: 'Active sessions', value: 18, icon: 'group' },
-        { label: 'Secured APIs', value: 12, icon: 'verified_user' },
-        { label: 'Pending alerts', value: 2, icon: 'notification_important' }
-      ]
-    }),
     catchError(() => of({
       metrics: [
         { label: 'Active sessions', value: 0, icon: 'group' },
@@ -162,4 +157,3 @@ export class DashboardComponent {
     }))
   );
 }
-

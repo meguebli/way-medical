@@ -5,6 +5,7 @@ describe('AuthTokenService', () => {
   let service: AuthTokenService;
 
   beforeEach(() => {
+    localStorage.clear();
     TestBed.configureTestingModule({});
     service = TestBed.inject(AuthTokenService);
   });
@@ -16,5 +17,12 @@ describe('AuthTokenService', () => {
     service.clearToken();
     expect(service.getToken()).toBeNull();
   });
-});
 
+  it('should restore token from localStorage', () => {
+    localStorage.setItem('wm_access_token', 'persisted-token');
+
+    const restoredService = TestBed.inject(AuthTokenService);
+
+    expect(restoredService.getToken()).toBe('persisted-token');
+  });
+});

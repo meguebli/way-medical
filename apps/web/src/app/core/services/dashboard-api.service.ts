@@ -1,7 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
-import { environment } from '../config/environment';
+import { Observable, map } from 'rxjs';
+import { UserApiService } from './user-api.service';
 
 export interface DashboardMetrics {
   activeSessions: number;
@@ -13,10 +12,15 @@ export interface DashboardMetrics {
   providedIn: 'root'
 })
 export class DashboardApiService {
-  private readonly http = inject(HttpClient);
+  private readonly userApiService = inject(UserApiService);
 
   getMetrics(): Observable<DashboardMetrics> {
-    return this.http.get<DashboardMetrics>(`${environment.apiBaseUrl}/dashboard/metrics`);
+    return this.userApiService.getUsers().pipe(
+      map((users) => ({
+        activeSessions: users.filter((user) => user.enabled).length,
+        securedApis: 3,
+        pendingAlerts: users.filter((user) => user.role === 'PRACTITIONER').length
+      }))
+    );
   }
 }
-

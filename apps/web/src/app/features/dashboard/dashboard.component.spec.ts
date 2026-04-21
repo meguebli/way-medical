@@ -30,8 +30,8 @@ describe('DashboardComponent', () => {
   it('should render dashboard metrics', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.textContent).toContain('Medical platform cockpit');
+    expect(compiled.textContent).toContain('JWT login wired to Spring Boot');
     expect(compiled.textContent).toContain('Active sessions');
     expect(compiled.textContent).toContain('7');
   });
 });
-

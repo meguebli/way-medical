@@ -14,6 +14,7 @@ Frontend web en Angular.
 ## Structure livree
 
 - `core/`: config, services, interceptor
+- `features/auth/`: login branche au backend JWT
 - `features/dashboard/`: premiere feature standalone
 - `app.config.ts`: providers Angular globaux
 - `app.routes.ts`: routing lazy
@@ -29,6 +30,8 @@ Frontend web en Angular.
 
 - test service token
 - test interceptor token
+- test service auth backend
+- test composant login
 - test composant dashboard
 
 ## Demarrage theorique

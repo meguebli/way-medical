@@ -1,14 +1,16 @@
+import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AuthTokenService } from './core/services/auth-token.service';
+import { AuthApiService } from './core/services/auth-api.service';
 
 @Component({
   selector: 'wm-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, MatToolbarModule, MatButtonModule, MatIconModule],
+  imports: [NgIf, RouterOutlet, RouterLink, MatToolbarModule, MatButtonModule, MatIconModule],
   template: `
     <mat-toolbar class="app-toolbar">
       <div class="brand">
@@ -18,8 +20,12 @@ import { AuthTokenService } from './core/services/auth-token.service';
 
       <span class="spacer"></span>
 
-      <button mat-stroked-button type="button" (click)="simulateToken()">
-        Simulate Token
+      <button *ngIf="!isAuthenticated()" mat-stroked-button routerLink="/login" type="button">
+        Login
+      </button>
+
+      <button *ngIf="isAuthenticated()" mat-stroked-button type="button" (click)="logout()">
+        Logout
       </button>
     </mat-toolbar>
 
@@ -57,9 +63,15 @@ import { AuthTokenService } from './core/services/auth-token.service';
 })
 export class AppComponent {
   private readonly authTokenService = inject(AuthTokenService);
+  private readonly authApiService = inject(AuthApiService);
+  private readonly router = inject(Router);
 
-  simulateToken(): void {
-    this.authTokenService.setToken('demo-token');
+  isAuthenticated(): boolean {
+    return this.authTokenService.isAuthenticated();
+  }
+
+  logout(): void {
+    this.authApiService.logout();
+    void this.router.navigate(['/login']);
   }
 }
-
