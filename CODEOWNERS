@@ -1,0 +1,8 @@
+# Ajuster selon l'equipe reelle
+* @team-leads
+/apps/web/ @frontend-team
+/apps/mobile/ @mobile-team
+/apps/api/ @backend-team
+/infra/ @devops-team
+/docs/security/ @security-team
+
