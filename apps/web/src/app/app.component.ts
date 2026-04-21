@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { finalize } from 'rxjs';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AuthTokenService } from './core/services/auth-token.service';
 import { AuthApiService } from './core/services/auth-api.service';
@@ -71,7 +72,10 @@ export class AppComponent {
   }
 
   logout(): void {
-    this.authApiService.logout();
-    void this.router.navigate(['/login']);
+    this.authApiService.logout()
+      .pipe(finalize(() => void this.router.navigate(['/login'])))
+      .subscribe({
+        error: () => this.authApiService.clearSession()
+      });
   }
 }

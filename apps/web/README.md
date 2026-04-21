@@ -7,6 +7,7 @@ Frontend web en Angular.
 - Angular standalone
 - Angular Material
 - Http interceptor pour token Bearer
+- refresh token et logout branches au backend
 - Change detection `OnPush`
 - lazy loading par route
 - Karma / Jasmine pour tests unitaires

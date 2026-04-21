@@ -12,7 +12,9 @@ describe('LoginComponent', () => {
     authApiService = jasmine.createSpyObj<AuthApiService>('AuthApiService', ['login']);
     authApiService.login.and.returnValue(of({
       accessToken: 'jwt-token',
+      refreshToken: 'refresh-token',
       expiresIn: 3600,
+      refreshExpiresIn: 604800,
       tokenType: 'Bearer'
     }));
 
@@ -37,4 +39,3 @@ describe('LoginComponent', () => {
     });
   });
 });
-
