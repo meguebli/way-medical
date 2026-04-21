@@ -1,0 +1,68 @@
+spring:
+  application:
+    name: way-medical-api
+  profiles:
+    default: local
+  datasource:
+    url: jdbc:h2:mem:waymedical;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+server:
+  port: 8080
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+---
+spring:
+  config:
+    activate:
+      on-profile: rct
+  datasource:
+    url: ${RCT_DB_URL}
+    username: ${RCT_DB_USERNAME}
+    password: ${RCT_DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+---
+spring:
+  config:
+    activate:
+      on-profile: ppr
+  datasource:
+    url: ${PPR_DB_URL}
+    username: ${PPR_DB_USERNAME}
+    password: ${PPR_DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: ${PROD_DB_URL}
+    username: ${PROD_DB_USERNAME}
+    password: ${PROD_DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+

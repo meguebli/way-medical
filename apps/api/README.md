@@ -2,17 +2,51 @@
 
 Backend principal en Java Spring Boot.
 
-## Responsabilites
+## Stack backend
 
-- exposition des API metier
-- authentification et autorisation
-- acces PostgreSQL
-- integration avec services externes
+- Spring Boot 3
+- Spring Security
+- Spring Data JPA
+- PostgreSQL
+- Flyway
+- Springdoc OpenAPI / Swagger
+- JUnit 5 / Mockito
 
-## Standards
+## Architecture livree
 
-- architecture modulaire par domaine
-- DTO et contrats explicites
-- migrations de base versionnees
-- tests unitaires et integration
+- `config/`: security, OpenAPI, bootstrap local
+- `common/`: erreurs API et exception handler
+- `user/`:
+  - `api/`: controller, DTO, mapper
+  - `domain/`: enums et modele de domaine simple
+  - `persistence/`: entity et repository
+  - `security/`: user details service
+  - `service/`: service interface et implementation
 
+## Fonctionnalites de base
+
+- Spring Security avec protection par roles
+- endpoint Swagger disponible
+- validation des requetes
+- gestion centralisee des exceptions
+- configuration par profils `local`, `rct`, `ppr`, `prod`
+- migration Flyway initiale
+- base de tests unitaires orientee TDD
+
+## Demarrage theorique
+
+Quand Java 21 et Maven seront installes:
+
+```powershell
+cd apps/api
+mvn spring-boot:run
+```
+
+Swagger:
+
+- `/swagger-ui.html`
+
+Compte local bootstrap:
+
+- `admin@wayupit.fr`
+- `ChangeMe123!`
