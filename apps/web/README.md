@@ -2,15 +2,41 @@
 
 Frontend web en Angular.
 
-## Responsabilites
+## Stack frontend
 
-- experience utilisateur web
-- consommation des API backend
-- gestion des roles et des ecrans metier
+- Angular standalone
+- Angular Material
+- Http interceptor pour token Bearer
+- Change detection `OnPush`
+- lazy loading par route
+- Karma / Jasmine pour tests unitaires
 
-## Standards
+## Structure livree
 
-- organisation par fonctionnalite
-- separation claire composants, services, modeles
-- gestion stricte des environnements
+- `core/`: config, services, interceptor
+- `features/dashboard/`: premiere feature standalone
+- `app.config.ts`: providers Angular globaux
+- `app.routes.ts`: routing lazy
 
+## Points performance
+
+- composants standalone
+- `OnPush` par defaut sur les composants livrés
+- lazy loading de la feature dashboard
+- budgets Angular dans `angular.json`
+
+## Tests
+
+- test service token
+- test interceptor token
+- test composant dashboard
+
+## Demarrage theorique
+
+Quand les dependances npm seront installees:
+
+```powershell
+cd apps/web
+npm install
+npm start
+```

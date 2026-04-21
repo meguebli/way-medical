@@ -1,0 +1,29 @@
+:root {
+  color-scheme: light;
+  --wm-bg: #f4f7fb;
+  --wm-surface: #ffffff;
+  --wm-primary: #005cbb;
+  --wm-primary-strong: #003d7a;
+  --wm-text: #1b2b40;
+  --wm-muted: #5e738c;
+  --wm-border: #d7e1ec;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(0, 92, 187, 0.1), transparent 30%),
+    linear-gradient(180deg, #f8fbff 0%, var(--wm-bg) 100%);
+  color: var(--wm-text);
+}
+
+* {
+  box-sizing: border-box;
+}
+
