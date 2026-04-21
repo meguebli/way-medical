@@ -1,0 +1,93 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - feature/**
+      - release/**
+      - hotfix/**
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  branch-policy:
+    name: Branch Policy
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Validate Git Flow source and target branches
+        env:
+          BASE_REF: ${{ github.base_ref }}
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          echo "Base branch: $BASE_REF"
+          echo "Head branch: $HEAD_REF"
+
+          if [ "$BASE_REF" = "main" ]; then
+            case "$HEAD_REF" in
+              release/*|hotfix/*)
+                echo "Valid PR into main."
+                ;;
+              *)
+                echo "Only release/* or hotfix/* branches can target main."
+                exit 1
+                ;;
+            esac
+          fi
+
+          if [ "$BASE_REF" = "develop" ]; then
+            case "$HEAD_REF" in
+              feature/*|hotfix/*|release/*)
+                echo "Valid PR into develop."
+                ;;
+              *)
+                echo "Only feature/*, release/*, or hotfix/* branches can target develop."
+                exit 1
+                ;;
+            esac
+          fi
+
+  repository-standards:
+    name: Repository Standards
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify required repository files
+        run: |
+          test -f README.md
+          test -f CONTRIBUTING.md
+          test -f SECURITY.md
+          test -f CODEOWNERS
+          test -f docs/process/git-flow.md
+          test -f .github/pull_request_template.md
+
+  powershell-scripts:
+    name: PowerShell Scripts
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate PowerShell script syntax
+        shell: pwsh
+        run: |
+          $scripts = Get-ChildItem -Path scripts -Recurse -Filter *.ps1
+          if (-not $scripts) {
+            throw "No PowerShell scripts found under scripts/"
+          }
+
+          foreach ($script in $scripts) {
+            Write-Host "Checking $($script.FullName)"
+            $null = [System.Management.Automation.Language.Parser]::ParseFile(
+              $script.FullName,
+              [ref]$null,
+              [ref]$null
+            )
+          }
+
