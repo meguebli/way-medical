@@ -37,6 +37,17 @@ management:
 spring:
   config:
     activate:
+      on-profile: local-postgres
+  datasource:
+    url: ${LOCAL_DB_URL:jdbc:postgresql://localhost:5441/way_medical}
+    username: ${LOCAL_DB_USERNAME:way_medical_app}
+    password: ${LOCAL_DB_PASSWORD:way_medical_pwd}
+    driver-class-name: org.postgresql.Driver
+
+---
+spring:
+  config:
+    activate:
       on-profile: rct
   datasource:
     url: ${RCT_DB_URL}
@@ -65,4 +76,3 @@ spring:
     username: ${PROD_DB_USERNAME}
     password: ${PROD_DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
-

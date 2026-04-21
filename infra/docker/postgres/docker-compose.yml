@@ -1,0 +1,30 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: way-medical-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-way_medical}
+      POSTGRES_USER: ${POSTGRES_USER:-way_medical_app}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-way_medical_pwd}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "${POSTGRES_PORT:-5441}:5432"
+    volumes:
+      - way_medical_postgres_data:/var/lib/postgresql/data
+      - ./init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-way_medical_app} -d ${POSTGRES_DB:-way_medical}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks:
+      - way_medical_network
+
+volumes:
+  way_medical_postgres_data:
+
+networks:
+  way_medical_network:
+    driver: bridge
+

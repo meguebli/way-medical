@@ -42,6 +42,12 @@ cd apps/api
 mvn spring-boot:run
 ```
 
+Avec PostgreSQL Docker local:
+
+```powershell
+mvn spring-boot:run -Dspring-boot.run.profiles=local-postgres
+```
+
 Swagger:
 
 - `/swagger-ui.html`

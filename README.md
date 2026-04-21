@@ -90,3 +90,4 @@ Exemples:
 - Jira automation: [scripts/jira/README.md](scripts/jira/README.md)
 - Git Flow helpers: [docs/process/git-flow.md](docs/process/git-flow.md)
 - GitHub protection guide: [docs/process/github-protection.md](docs/process/github-protection.md)
+- Local PostgreSQL guide: [docs/process/local-postgres.md](docs/process/local-postgres.md)
