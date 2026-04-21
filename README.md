@@ -13,15 +13,37 @@ Base de monorepo pour une plateforme web/mobile medicale avec front-end, back-en
 ```text
 WAY-MEDICAL/
 |- apps/
-|  |- web/        # application web
-|  |- mobile/     # application mobile
-|  `- api/        # API / backend
-|- packages/      # bibliotheques partagees
-|- infra/         # IaC, CI/CD, deploiement, observabilite
-|- docs/          # architecture, ADR, securite, procedures
+|  |- web/        # Angular
+|  |- mobile/     # React mobile
+|  `- api/        # Java Spring Boot
+|- packages/      # contrats, schemas, librairies partagees
+|- infra/         # IaC, CI/CD, deploiement, observabilite, environnements
+|- docs/          # architecture, ADR, securite, delivery
 |- scripts/       # scripts d'automatisation
 `- .github/       # templates et standards GitHub
 ```
+
+## Stack retenue
+
+- Backend: Java Spring Boot
+- Frontend web: Angular
+- Mobile: React
+- Base de donnees: PostgreSQL
+- Gestion agile: Jira
+- Documentation: Confluence
+
+## Environnements
+
+- `RCT`: recette / validation fonctionnelle
+- `PPR`: pre-production
+- `PROD`: production
+
+Chaque environnement doit avoir:
+
+- sa configuration separee
+- ses secrets separes
+- sa base de donnees separee
+- ses pipelines et controles de deploiement
 
 ## Standards Git proposes
 
@@ -55,11 +77,7 @@ Exemples:
 
 ## Prochaines etapes recommandees
 
-- Choisir la stack technique cible:
-  - Web: React / Next.js ou autre
-  - Mobile: React Native / Flutter / natif
-  - API: Node.js / NestJS / FastAPI / autre
-- Mettre en place CI/CD
+- Scaffold des applications Angular, Spring Boot et mobile React
+- Mettre en place CI/CD par environnement `RCT`, `PPR`, `PROD`
 - Ajouter lint, tests, SAST, secret scanning, dependency scanning
 - Configurer les protections de branches sur la forge
-

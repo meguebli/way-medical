@@ -19,6 +19,16 @@
 4. Ouvrir une PR
 5. Faire relire avant merge
 
+Scopes recommandes:
+
+- `api`
+- `web`
+- `mobile`
+- `db`
+- `infra`
+- `docs`
+- `security`
+
 ## Convention de commit
 
 Format:
@@ -45,6 +55,7 @@ Types conseilles:
 Une PR doit idealement:
 
 - decrire le besoin
+- mentionner le ticket Jira
 - lister les changements
 - indiquer les risques
 - expliquer comment tester
@@ -61,3 +72,15 @@ Verifier au minimum:
 - impacts observabilite / logs
 - absence de secrets et donnees sensibles
 
+## Jira et Confluence
+
+- Toute fonctionnalite ou correction doit etre rattachee a un ticket Jira
+- Les decisions d'architecture et procedures d'exploitation doivent etre documentees dans Confluence
+- Les ADR du repo restent la reference technique versionnee
+
+Convention conseillee pour les branches:
+
+```text
+feat/api-WAY-123-authentication
+fix/web-WAY-456-login-timeout
+```
