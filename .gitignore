@@ -26,6 +26,7 @@ node_modules/
 # Build outputs
 dist/
 build/
+target/
 coverage/
 .next/
 .nuxt/
@@ -57,4 +58,3 @@ crash.log
 *.key
 *.crt
 secrets/
-
