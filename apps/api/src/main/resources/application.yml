@@ -38,6 +38,7 @@ app:
     jwt:
       secret: ${JWT_SECRET:V2F5TWVkaWNhbFN1cGVyU2VjcmV0S2V5Rm9ySldUMTIzNDU2Nzg5MDEyMzQ1Ng==}
       expiration-seconds: ${JWT_EXPIRATION_SECONDS:3600}
+      refresh-expiration-seconds: ${JWT_REFRESH_EXPIRATION_SECONDS:604800}
 
 ---
 spring:

@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 class JwtTokenServiceTest {
 
   private final JwtTokenService jwtTokenService = new JwtTokenService(
-      new JwtProperties("V2F5TWVkaWNhbFN1cGVyU2VjcmV0S2V5Rm9ySldUMTIzNDU2Nzg5MDEyMzQ1Ng==", 3600)
+      new JwtProperties("V2F5TWVkaWNhbFN1cGVyU2VjcmV0S2V5Rm9ySldUMTIzNDU2Nzg5MDEyMzQ1Ng==", 3600, 604800)
   );
 
   @Test
@@ -27,4 +27,3 @@ class JwtTokenServiceTest {
     assertThat(jwtTokenService.isTokenValid(token, userDetails)).isTrue();
   }
 }
-

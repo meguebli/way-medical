@@ -40,9 +40,11 @@ public class SecurityConfig {
                 "/swagger-ui/**",
                 "/swagger-ui.html",
                 "/actuator/health",
-                "/api/v1/auth/login").permitAll()
-            .requestMatchers(HttpMethod.GET, "/api/v1/users/**").hasAnyRole("ADMIN", "MANAGER")
-            .requestMatchers("/api/v1/users/**").hasRole("ADMIN")
+                "/api/v1/auth/login",
+                "/api/v1/auth/refresh",
+                "/api/v1/auth/logout").permitAll()
+            .requestMatchers(HttpMethod.GET, "/api/v1/users/**").hasAuthority("users:read")
+            .requestMatchers("/api/v1/users/**").hasAuthority("users:create")
             .anyRequest().authenticated())
         .authenticationProvider(authenticationProvider())
         .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

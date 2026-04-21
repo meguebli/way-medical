@@ -38,7 +38,7 @@ class AuthControllerTest {
 
   @Test
   void shouldReturnJwtOnSuccessfulLogin() throws Exception {
-    when(authService.authenticate(any())).thenReturn(new AuthResponse("jwt-token", 3600L, "Bearer"));
+    when(authService.authenticate(any())).thenReturn(new AuthResponse("jwt-token", "refresh-token", 3600L, 604800L, "Bearer"));
 
     mockMvc.perform(post("/api/v1/auth/login")
             .contentType(MediaType.APPLICATION_JSON)
@@ -50,7 +50,35 @@ class AuthControllerTest {
                 """))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.accessToken").value("jwt-token"))
+        .andExpect(jsonPath("$.refreshToken").value("refresh-token"))
         .andExpect(jsonPath("$.tokenType").value("Bearer"));
   }
-}
 
+  @Test
+  void shouldRefreshJwt() throws Exception {
+    when(authService.refresh(any())).thenReturn(new AuthResponse("new-jwt", "new-refresh", 3600L, 604800L, "Bearer"));
+
+    mockMvc.perform(post("/api/v1/auth/refresh")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content("""
+                {
+                  "refreshToken": "refresh-token"
+                }
+                """))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$.accessToken").value("new-jwt"))
+        .andExpect(jsonPath("$.refreshToken").value("new-refresh"));
+  }
+
+  @Test
+  void shouldLogout() throws Exception {
+    mockMvc.perform(post("/api/v1/auth/logout")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content("""
+                {
+                  "refreshToken": "refresh-token"
+                }
+                """))
+        .andExpect(status().isNoContent());
+  }
+}

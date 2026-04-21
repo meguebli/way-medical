@@ -49,6 +49,10 @@ public class JwtTokenService {
     return jwtProperties.expirationSeconds();
   }
 
+  public long getRefreshExpirationSeconds() {
+    return jwtProperties.refreshExpirationSeconds();
+  }
+
   private boolean isTokenExpired(String token) {
     return extractAllClaims(token).getExpiration().before(new Date());
   }

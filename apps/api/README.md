@@ -27,6 +27,8 @@ Backend principal en Java Spring Boot.
 
 - Spring Security avec auth JWT et protection par roles
 - endpoint login `/api/v1/auth/login`
+- endpoint refresh `/api/v1/auth/refresh`
+- endpoint logout `/api/v1/auth/logout`
 - endpoint Swagger disponible
 - validation des requetes
 - gestion centralisee des exceptions
@@ -61,3 +63,5 @@ Compte local bootstrap:
 JWT:
 
 - header: `Authorization: Bearer <token>`
+- access token court
+- refresh token rotatif avec revocation serveur
