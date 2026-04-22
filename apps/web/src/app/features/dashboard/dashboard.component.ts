@@ -1,4 +1,4 @@
-import { AsyncPipe, NgFor } from '@angular/common';
+import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
@@ -14,6 +14,7 @@ import { DashboardApiService } from '../../core/services/dashboard-api.service';
   imports: [
     AsyncPipe,
     NgFor,
+    NgIf,
     MatCardModule,
     MatChipsModule,
     MatDividerModule,

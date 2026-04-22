@@ -38,7 +38,7 @@ import { AuthApiService } from '../../core/services/auth-api.service';
           </mat-form-field>
 
           <p class="helper">
-            Local backend bootstrap user: <strong>admin@wayupit.fr</strong> / <strong>ChangeMe123!</strong>
+            Local backend bootstrap user: <strong>admin&#64;wayupit.fr</strong> / <strong>ChangeMe123!</strong>
           </p>
 
           <p class="error" *ngIf="errorMessage()">{{ errorMessage() }}</p>

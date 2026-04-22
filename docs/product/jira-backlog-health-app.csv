@@ -1,0 +1,80 @@
+Issue Type,Summary,Description,Epic Name,Parent Summary,Priority
+Epic,Architecture securisee de la plateforme mobile sante,"Concevoir l'architecture front-end, back-end, base de donnees et la separation des environnements avec un niveau de securite adapte aux donnees de sante.",Architecture securisee de la plateforme mobile sante,,High
+Story,Definir l'architecture cible front back base de donnees,"Formaliser l'architecture Angular, Spring Boot, PostgreSQL, mobile et les flux principaux.",Architecture securisee de la plateforme mobile sante,,High
+Subtask,Produire le schema d'architecture technique de reference,"Documenter les composants et leurs interfaces.",Architecture securisee de la plateforme mobile sante,Definir l'architecture cible front back base de donnees,Medium
+Subtask,Definir les flux reseau entre mobile API base et services tiers,"Preciser les ports, protocoles et zones de securite.",Architecture securisee de la plateforme mobile sante,Definir l'architecture cible front back base de donnees,Medium
+Story,Definir la strategie de securite applicative et mobile,"Poser les principes de securite pour l'API, les tokens, le mobile et les donnees de sante.",Architecture securisee de la plateforme mobile sante,,High
+Subtask,Documenter les exigences JWT refresh token et logout,"Aligner la strategie de session sur les besoins de securite.",Architecture securisee de la plateforme mobile sante,Definir la strategie de securite applicative et mobile,Medium
+Subtask,Definir les exigences OWASP mobile et API,"Selectionner les controles prioritaires pour l'application.",Architecture securisee de la plateforme mobile sante,Definir la strategie de securite applicative et mobile,Medium
+Epic,Conception de la base de donnees medicale,"Modeliser les entites cles et la protection des donnees sensibles pour l'application de sante.",Conception de la base de donnees medicale,,High
+Story,Modeliser patients medecins consultations et dossiers medicaux,"Concevoir le modele relationnel central du domaine medical.",Conception de la base de donnees medicale,,High
+Subtask,Produire le MCD UML des entites medicales,"Inclure patients, professionnels, rendez-vous, consultations et dossiers.",Conception de la base de donnees medicale,Modeliser patients medecins consultations et dossiers medicaux,Medium
+Subtask,Definir les relations et contraintes d'integrite,"Precisier les cardinalites, cles et regles de reference.",Conception de la base de donnees medicale,Modeliser patients medecins consultations et dossiers medicaux,Medium
+Story,Proteger les donnees medicales sensibles en base,"Definir les champs sensibles, les regles de chiffrement et la gouvernance d'acces.",Conception de la base de donnees medicale,,High
+Subtask,Identifier les champs a chiffrer ou pseudonymiser,"Lister les donnees sensibles au sens RGPD et metier.",Conception de la base de donnees medicale,Proteger les donnees medicales sensibles en base,High
+Subtask,Definir la politique de retention et d'audit des donnees,"Tracer les acces et definir les regles de conservation.",Conception de la base de donnees medicale,Proteger les donnees medicales sensibles en base,Medium
+Epic,Developpement des modules principaux,"Mettre en oeuvre les modules coeur de l'application mobile de gestion d'etablissement de sante.",Developpement des modules principaux,,Highest
+Story,Developper la gestion des patients,"Permettre la creation, la consultation et la mise a jour des donnees patient.",Developpement des modules principaux,,High
+Subtask,Creer les endpoints backend de gestion patient,"Prevoir CRUD, validation et securite.",Developpement des modules principaux,Developper la gestion des patients,High
+Subtask,Concevoir les ecrans mobiles de gestion patient,"Assurer une UX mobile first claire et securisee.",Developpement des modules principaux,Developper la gestion des patients,Medium
+Story,Developper la gestion des dossiers medicaux partages,"Permettre l'acces controle au dossier medical et son partage interne.",Developpement des modules principaux,,High
+Subtask,Definir les regles d'acces au dossier medical,"Appliquer besoin d'en connaitre et tracabilite.",Developpement des modules principaux,Developper la gestion des dossiers medicaux partages,High
+Subtask,Implementer la consultation et mise a jour du dossier,"Gerer historique, pieces jointes et audit.",Developpement des modules principaux,Developper la gestion des dossiers medicaux partages,High
+Story,Developper la gestion des rendez-vous et preconsultations,"Couvrir choix du service, approbation, affectation et actes paramedicaux avant consultation.",Developpement des modules principaux,,Highest
+Subtask,Implementer le workflow de rendez-vous par service,"Inclure demande, validation, planification et annulation.",Developpement des modules principaux,Developper la gestion des rendez-vous et preconsultations,High
+Subtask,Implementer la check-list preconsultation,"Tracer les actes realises avant le medecin.",Developpement des modules principaux,Developper la gestion des rendez-vous et preconsultations,High
+Story,Developper la gestion des utilisateurs et roles,"Gerber les comptes staff medical admin et patient avec droits differencies.",Developpement des modules principaux,,High
+Subtask,Definir les roles et permissions fines de la plateforme,"Formaliser les habilitations par type d'utilisateur.",Developpement des modules principaux,Developper la gestion des utilisateurs et roles,High
+Subtask,Mettre en place l'administration des comptes,"Prevoir creation, activation et revocation.",Developpement des modules principaux,Developper la gestion des utilisateurs et roles,Medium
+Epic,Securisation des donnees,"Mettre en place les mecanismes de securite essentiels sur les donnees, les acces et les journaux.",Securisation des donnees,,Highest
+Story,Implementer le hachage des mots de passe et la gestion des secrets,"Choisir les mecanismes de hachage et proteger les secrets applicatifs.",Securisation des donnees,,Highest
+Subtask,Valider la strategie de hachage des mots de passe,"S'assurer de la conformite des parametres choisis.",Securisation des donnees,Implementer le hachage des mots de passe et la gestion des secrets,High
+Subtask,Externaliser les secrets par environnement,"Sortir les secrets du code et definir leur rotation.",Securisation des donnees,Implementer le hachage des mots de passe et la gestion des secrets,High
+Story,Implementer le chiffrement et le controle d'acces,"Chiffrer les donnees sensibles et securiser l'authentification et l'autorisation.",Securisation des donnees,,Highest
+Subtask,Mettre en oeuvre le chiffrement des donnees sensibles,"Definir les champs et les mecanismes de chiffrement.",Securisation des donnees,Implementer le chiffrement et le controle d'acces,High
+Subtask,Verrouiller l'authentification et les autorisations,"Appliquer JWT, refresh token, logout et permissions.",Securisation des donnees,Implementer le chiffrement et le controle d'acces,Highest
+Story,Mettre en place la journalisation et la surveillance securite,"Tracer les acces, les echecs, les exports et les operations sensibles.",Securisation des donnees,,High
+Subtask,Definir les logs de securite obligatoires,"Tracer les acces, erreurs et actions critiques.",Securisation des donnees,Mettre en place la journalisation et la surveillance securite,High
+Subtask,Mettre en place un suivi automatique des logs sensibles,"Permettre audit et alerting securite.",Securisation des donnees,Mettre en place la journalisation et la surveillance securite,Medium
+Epic,Gestion des environnements et deploiement,"Mettre en place DEV, RCT, PPR, PROD ainsi que les pipelines CI/CD.",Gestion des environnements et deploiement,,High
+Story,Structurer les environnements DEV RCT PPR PROD,"Definir la configuration, les secrets, les donnees et les acces pour chaque environnement.",Gestion des environnements et deploiement,,High
+Subtask,Documenter la configuration cible par environnement,"Lister variables, endpoints et dependances.",Gestion des environnements et deploiement,Structurer les environnements DEV RCT PPR PROD,Medium
+Subtask,Definir les jeux de donnees et regles de segregation,"Garantir la separation des environnements.",Gestion des environnements et deploiement,Structurer les environnements DEV RCT PPR PROD,High
+Story,Mettre en place les pipelines CI CD,"Automatiser build, tests, qualite et deploiement sur les environnements cibles.",Gestion des environnements et deploiement,,High
+Subtask,Creer la pipeline CI de build et tests,"Couvrir front, back et controles de qualite.",Gestion des environnements et deploiement,Mettre en place les pipelines CI CD,High
+Subtask,Preparer les jobs de deploiement par environnement,"Gerer promotion et validations de release.",Gestion des environnements et deploiement,Mettre en place les pipelines CI CD,High
+Epic,Tests et validation,"Valider la conformite fonctionnelle, technique et securitaire du systeme.",Tests et validation,,High
+Story,Mettre en place les tests fonctionnels et techniques,"Structurer la strategie de tests unitaires, integration et bout en bout.",Tests et validation,,High
+Subtask,Definir la matrice de tests par module,"Associer les cas de tests aux fonctionnalites.",Tests et validation,Mettre en place les tests fonctionnels et techniques,Medium
+Subtask,Automatiser les tests unitaires et d'integration,"Couvrir les composants critiques.",Tests et validation,Mettre en place les tests fonctionnels et techniques,High
+Story,Realiser les tests de securite et de conformite,"Verifier les acces, les logs, les exports et la resistance des controles.",Tests et validation,,High
+Subtask,Ecrire les scenarios de tests de securite,"Inclure auth, permissions, logs et gestion des tokens.",Tests et validation,Realiser les tests de securite et de conformite,High
+Subtask,Verifier la conformite des flux de donnees,"Controler les regles RGPD et traces d'audit.",Tests et validation,Realiser les tests de securite et de conformite,High
+Epic,Documentation et soutenance,"Documenter techniquement et fonctionnellement le systeme et preparer la presentation projet.",Documentation et soutenance,,Medium
+Story,Rediger la documentation technique et fonctionnelle,"Formaliser architecture, API, modele de donnees, workflows et guides d'exploitation.",Documentation et soutenance,,Medium
+Subtask,Produire les documents UML et architecture,"Documenter les vues fonctionnelles et techniques.",Documentation et soutenance,Rediger la documentation technique et fonctionnelle,Medium
+Subtask,Rassembler la documentation utilisateur et exploitation,"Preparer les supports pour l'equipe et la soutenance.",Documentation et soutenance,Rediger la documentation technique et fonctionnelle,Medium
+Story,Preparer la soutenance du projet,"Construire un support clair de presentation technique et metier.",Documentation et soutenance,,Medium
+Subtask,Structurer le plan de soutenance,"Mettre en avant objectifs, architecture, securite et demarche.",Documentation et soutenance,Preparer la soutenance du projet,Medium
+Subtask,Preparer la demonstration des modules clefs,"Montrer la valeur du parcours patient et staff.",Documentation et soutenance,Preparer la soutenance du projet,Medium
+Epic,n8n data orchestration,"Automatiser l'integration et le rafraichissement des donnees medicales via n8n.",n8n data orchestration,,High
+Story,Mettre en place la chaine hebdomadaire de rafraichissement des donnees medicales,"Concevoir le pipeline n8n d'extraction, nettoyage et alimentation des donnees.",n8n data orchestration,,High
+Subtask,Configurer l'extraction des donnees depuis PostgreSQL,"Definir sources, frequence et controles.",n8n data orchestration,Mettre en place la chaine hebdomadaire de rafraichissement des donnees medicales,Medium
+Subtask,Construire le pipeline de nettoyage et alimentation datamart,"Transformer puis exposer les indicateurs.",n8n data orchestration,Mettre en place la chaine hebdomadaire de rafraichissement des donnees medicales,High
+Story,Anonymiser partiellement les donnees pour PREPROD,"Preparer des jeux de donnees exploitables sans exposition excessive des donnees de sante.",n8n data orchestration,,High
+Subtask,Definir les regles d'anonymisation et pseudonymisation,"Preciser les champs et niveaux de masquage.",n8n data orchestration,Anonymiser partiellement les donnees pour PREPROD,High
+Subtask,Automatiser la generation d'indicateurs hebdomadaires,"Produire des indicateurs alimentes par n8n.",n8n data orchestration,Anonymiser partiellement les donnees pour PREPROD,Medium
+Epic,n8n gestion documentaire intelligente,"Automatiser le cycle de vie des documents medicaux via n8n.",n8n gestion documentaire intelligente,,High
+Story,Automatiser le workflow d'upload et validation des documents medicaux,"Prendre en charge verification de format, hash, classement et historisation.",n8n gestion documentaire intelligente,,High
+Subtask,Verifier automatiquement le format et le hash des documents,"Controler integrite et conformite du fichier.",n8n gestion documentaire intelligente,Automatiser le workflow d'upload et validation des documents medicaux,High
+Subtask,Mettre en place le classement et l'historisation des documents,"Conserver les versions et le rangement metier.",n8n gestion documentaire intelligente,Automatiser le workflow d'upload et validation des documents medicaux,Medium
+Story,Alerter sur les documents medicaux manquants,"Declencher des alertes n8n quand un document attendu est absent ou incomplet.",n8n gestion documentaire intelligente,,Medium
+Subtask,Definir les regles de completude documentaire,"Identifier les pieces attendues par workflow.",n8n gestion documentaire intelligente,Alerter sur les documents medicaux manquants,Medium
+Subtask,Mettre en oeuvre les notifications de relance,"Alerter les equipes concernees en cas de manquant.",n8n gestion documentaire intelligente,Alerter sur les documents medicaux manquants,Medium
+Epic,n8n supervision et conformite,"Automatiser les controles de conformite et la supervision des flux de donnees.",n8n supervision et conformite,,High
+Story,Automatiser le controle des acces et des exports de donnees,"Suivre les acces, les logs d'echec, les sauvegardes et les exports sensibles.",n8n supervision et conformite,,High
+Subtask,Mettre en place le suivi des echecs d'acces et sauvegardes,"Centraliser les evenements critiques dans n8n.",n8n supervision et conformite,Automatiser le controle des acces et des exports de donnees,Medium
+Subtask,Automatiser l'audit des exports de donnees,"Tracer les exports et lever des alertes si besoin.",n8n supervision et conformite,Automatiser le controle des acces et des exports de donnees,High
+Story,Encadrer l'usage de n8n dans un contexte medical,"Poser les limites et controles de n8n vis-a-vis du backend et des donnees de sante.",n8n supervision et conformite,,High
+Subtask,Documenter les limites de n8n face aux regles metier sensibles,"Rappeler que n8n ne remplace pas le backend Spring.",n8n supervision et conformite,Encadrer l'usage de n8n dans un contexte medical,High
+Subtask,Definir la securite self hosted et la gestion de la cle d'encryption,"Encadrer les environnements et les credentials n8n.",n8n supervision et conformite,Encadrer l'usage de n8n dans un contexte medical,High

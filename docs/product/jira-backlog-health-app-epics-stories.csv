@@ -1,0 +1,35 @@
+Issue Type,Summary,Description,Epic Name,Priority
+Epic,Architecture securisee de la plateforme mobile sante,"Concevoir l'architecture front-end, back-end, base de donnees et la separation des environnements avec un niveau de securite adapte aux donnees de sante.",Architecture securisee de la plateforme mobile sante,High
+Story,Definir l'architecture cible front back base de donnees,"Formaliser l'architecture Angular, Spring Boot, PostgreSQL, mobile et les flux principaux.",Architecture securisee de la plateforme mobile sante,High
+Story,Definir la strategie de securite applicative et mobile,"Poser les principes de securite pour l'API, les tokens, le mobile et les donnees de sante.",Architecture securisee de la plateforme mobile sante,High
+Epic,Conception de la base de donnees medicale,"Modeliser les entites cles et la protection des donnees sensibles pour l'application de sante.",Conception de la base de donnees medicale,High
+Story,Modeliser patients medecins consultations et dossiers medicaux,"Concevoir le modele relationnel central du domaine medical.",Conception de la base de donnees medicale,High
+Story,Proteger les donnees medicales sensibles en base,"Definir les champs sensibles, les regles de chiffrement et la gouvernance d'acces.",Conception de la base de donnees medicale,High
+Epic,Developpement des modules principaux,"Mettre en oeuvre les modules coeur de l'application mobile de gestion d'etablissement de sante.",Developpement des modules principaux,Highest
+Story,Developper la gestion des patients,"Permettre la creation, la consultation et la mise a jour des donnees patient.",Developpement des modules principaux,High
+Story,Developper la gestion des dossiers medicaux partages,"Permettre l'acces controle au dossier medical et son partage interne.",Developpement des modules principaux,High
+Story,Developper la gestion des rendez-vous et preconsultations,"Couvrir choix du service, approbation, affectation et actes paramedicaux avant consultation.",Developpement des modules principaux,Highest
+Story,Developper la gestion des utilisateurs et roles,"Gerber les comptes staff medical admin et patient avec droits differencies.",Developpement des modules principaux,High
+Epic,Securisation des donnees,"Mettre en place les mecanismes de securite essentiels sur les donnees, les acces et les journaux.",Securisation des donnees,Highest
+Story,Implementer le hachage des mots de passe et la gestion des secrets,"Choisir les mecanismes de hachage et proteger les secrets applicatifs.",Securisation des donnees,Highest
+Story,Implementer le chiffrement et le controle d'acces,"Chiffrer les donnees sensibles et securiser l'authentification et l'autorisation.",Securisation des donnees,Highest
+Story,Mettre en place la journalisation et la surveillance securite,"Tracer les acces, les echecs, les exports et les operations sensibles.",Securisation des donnees,High
+Epic,Gestion des environnements et deploiement,"Mettre en place DEV, RCT, PPR, PROD ainsi que les pipelines CI/CD.",Gestion des environnements et deploiement,High
+Story,Structurer les environnements DEV RCT PPR PROD,"Definir la configuration, les secrets, les donnees et les acces pour chaque environnement.",Gestion des environnements et deploiement,High
+Story,Mettre en place les pipelines CI CD,"Automatiser build, tests, qualite et deploiement sur les environnements cibles.",Gestion des environnements et deploiement,High
+Epic,Tests et validation,"Valider la conformite fonctionnelle, technique et securitaire du systeme.",Tests et validation,High
+Story,Mettre en place les tests fonctionnels et techniques,"Structurer la strategie de tests unitaires, integration et bout en bout.",Tests et validation,High
+Story,Realiser les tests de securite et de conformite,"Verifier les acces, les logs, les exports et la resistance des controles.",Tests et validation,High
+Epic,Documentation et soutenance,"Documenter techniquement et fonctionnellement le systeme et preparer la presentation projet.",Documentation et soutenance,Medium
+Story,Rediger la documentation technique et fonctionnelle,"Formaliser architecture, API, modele de donnees, workflows et guides d'exploitation.",Documentation et soutenance,Medium
+Story,Preparer la soutenance du projet,"Construire un support clair de presentation technique et metier.",Documentation et soutenance,Medium
+Epic,n8n data orchestration,"Automatiser l'integration et le rafraichissement des donnees medicales via n8n.",n8n data orchestration,High
+Story,Mettre en place la chaine hebdomadaire de rafraichissement des donnees medicales,"Concevoir le pipeline n8n d'extraction, nettoyage et alimentation des donnees.",n8n data orchestration,High
+Story,Anonymiser partiellement les donnees pour PREPROD,"Preparer des jeux de donnees exploitables sans exposition excessive des donnees de sante.",n8n data orchestration,High
+Epic,n8n gestion documentaire intelligente,"Automatiser le cycle de vie des documents medicaux via n8n.",n8n gestion documentaire intelligente,High
+Story,Automatiser le workflow d'upload et validation des documents medicaux,"Prendre en charge verification de format, hash, classement et historisation.",n8n gestion documentaire intelligente,High
+Story,Alerter sur les documents medicaux manquants,"Declencher des alertes n8n quand un document attendu est absent ou incomplet.",n8n gestion documentaire intelligente,Medium
+Epic,n8n supervision et conformite,"Automatiser les controles de conformite et la supervision des flux de donnees.",n8n supervision et conformite,High
+Story,Automatiser le controle des acces et des exports de donnees,"Suivre les acces, les logs d'echec, les sauvegardes et les exports sensibles.",n8n supervision et conformite,High
+Story,Encadrer l'usage de n8n dans un contexte medical,"Poser les limites et controles de n8n vis-a-vis du backend et des donnees de sante.",n8n supervision et conformite,High
+
