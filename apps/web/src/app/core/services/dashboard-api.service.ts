@@ -17,9 +17,9 @@ export class DashboardApiService {
   getMetrics(): Observable<DashboardMetrics> {
     return this.userApiService.getUsers().pipe(
       map((users) => ({
-        activeSessions: users.filter((user) => user.enabled).length,
+        activeSessions: users.filter((user) => user.active).length,
         securedApis: 3,
-        pendingAlerts: users.filter((user) => user.role === 'PRACTITIONER').length
+        pendingAlerts: users.filter((user) => user.role === 'DOCTOR').length
       }))
     );
   }
